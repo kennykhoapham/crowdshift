@@ -1,0 +1,1 @@
+web: gunicorn crowdshift.wsgi --log-file -
