@@ -63,12 +63,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django_postgrespool',
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-            'NAME': 'd2one8uovq33oi',                      # Or path to database file if using sqlite3.
+            #'NAME': 'd2one8uovq33oi',                      # Or path to database file if using sqlite3.
             # The following settings are not used with sqlite3:
-            'USER': 'aplvndlnovsejk',
-            'PASSWORD': 'TO7FLfsfGu4Q7HAev4gkrauflt',
-            'HOST': 'ec2-50-17-192-136.compute-1.amazonaws.com',                      # Empty for localhost through domain sockets or           '127.0.0.1' for localhost through TCP.
-            'PORT': '5432',                      # Set to empty string for default.
+            #'USER': 'aplvndlnovsejk',
+            #'PASSWORD': 'TO7FLfsfGu4Q7HAev4gkrauflt',
+            #'HOST': 'ec2-50-17-192-136.compute-1.amazonaws.com',                      # Empty for localhost through domain sockets or           '127.0.0.1' for localhost through TCP.
+            #'PORT': '5432',                      # Set to empty string for default.
     }
 }
 
@@ -83,8 +83,8 @@ USE_TZ = True
 
 
 # Parse database configuration from $DATABASE_URL
-DATABASES['default'] =  dj_database_url.config()
-
+#DATABASES['default'] =  dj_database_url.config()
+DATABASES = {'default': dj_database_url.parse('postgres://aplvndlnovsejk:TO7FLfsfGu4Q7HAev4gkrauflt@ec2-50-17-192-136.compute-1.amazonaws.com:5432/d2one8uovq33oi')}
 # Enable Connection Pooling (if desired)
 DATABASES['default']['ENGINE'] = 'django_postgrespool'
 
