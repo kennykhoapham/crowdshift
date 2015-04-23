@@ -1,0 +1,7 @@
+{% load i18n %}
+<table>
+    <form method='post' action=''>{% csrf_token %}
+        {{ form }}
+        <tr><td></td><td><input type="submit" value="{% trans "Submitl" %}" /></td>
+    </form>
+</table>
