@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.db.models import Q
@@ -8,7 +9,9 @@ from reviews.models import Review
 from reviews.forms import SearchForm
 
 def index(request):
-    return render_to_response('index.html', context_instance = RequestContext(request))
+	form = SearchForm()
+	return render(request,'index.html',{'form': form,})
+    #return render_to_response('index.html', context_instance = RequestContext(request))
 
 def vehicle(request, year, make,model):
 	#reviews = Vehicle.reviews.objects.all()
@@ -32,14 +35,12 @@ def search(request):
  
         # If data is valid, proceeds to search
         if form.is_valid():
-            content = form.cleaned_data['content']
-            created_at = form.cleaned_data['created_at']
-            post = m.Post.objects.create(content=content,
-                                         created_at=created_at)
-            return HttpResponseRedirect(reverse('post_detail',
-                                                kwargs={'post_id': post.id}))
+            content = form.cleaned_data['search']
+            #created_at = form.cleaned_data['created_at']
+            #post = m.Post.objects.create(content=content, created_at=created_at)
+            return HttpResponseRedirect('/result/')
+
+    return render_to_response('search_result.html', {'form': form,})
  
-    return render(request, 'search_result.html', {
-        'form': form,
-    })
+    #return render(request, 'search_result.html', {'form': form,})
 

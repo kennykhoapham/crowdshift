@@ -1,6 +1,4 @@
 from django import forms
  
 class SearchForm(forms.Form):
-    content = forms.CharField(max_length=100)
-
-    
+    search = forms.CharField(label="", max_length=200, widget=forms.TextInput(attrs={'size':'40'}))
