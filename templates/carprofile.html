@@ -34,8 +34,14 @@
 
 		<br><br>
 		<center>
-			<h1>The car profile for {{ year }} {{ make }} {{ model }}</h1>
+			<h1>A car profile for {{ year }} {{ make }} {{ model }}</h1>
 			<p>This is an example of a HTML car profile page on Django web framework</p>
+			<h2>Review:</h2>
+			{% for i in reviews %}
+			<p>{{ i.title }} by {{i.author}}</p>
+			<p>{{ i.body }}</p>
+
+			{% endfor %}
 		</center>
 
 			<div class="row">
