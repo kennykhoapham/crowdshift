@@ -36,9 +36,13 @@ def search(request):
         # If data is valid, proceeds to search
         if form.is_valid():
             content = form.cleaned_data['search']
+            contentList = content.split()
+
+            results = Vehicle.objects.filter(Q(make__icontains=content) | Q(model__icontains=content) | Q(year__icontains=content))
             #created_at = form.cleaned_data['created_at']
             #post = m.Post.objects.create(content=content, created_at=created_at)
-            return HttpResponseRedirect('/result/')
+            #return HttpResponseRedirect('/result/')
+            return render_to_response('search_result.html', {'results': results,})
 
     return render_to_response('search_result.html', {'form': form,})
  

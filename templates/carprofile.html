@@ -35,25 +35,15 @@
 		<br><br>
 		<center>
 			<h1>A car profile for {{ year }} {{ make }} {{ model }}</h1>
-			<p>This is an example of a HTML car profile page on Django web framework</p>
+			<br><br>
 			<h2>Review:</h2>
 			{% for i in reviews %}
-			<p>{{ i.title }} by {{i.author}}</p>
+			<h3>{{ i.title }} by {{i.author}}</h3>
 			<p>{{ i.body }}</p>
 
 			{% endfor %}
 		</center>
 
-			<div class="row">
-			  <div class="col-md-4 col-md-offset-4">
-			    <div class="input-group">
-			      <input type="text" class="form-control" placeholder="Search for...">
-			      <span class="input-group-btn">
-			        <button class="btn btn-default" type="button">Go!</button>
-			      </span>
-			    </div><!-- /input-group -->
-			  </div><!-- /.col-lg-6 -->
-			</div><!-- /.row -->
 
 
 		
