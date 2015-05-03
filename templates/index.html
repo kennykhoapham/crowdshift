@@ -9,14 +9,17 @@
 	</head>
 
 	<body>
+	<center><a href="/"><h1>crowdshift</h1></a></center>
+	
 
-	<center>
+
     <div id="header">
+    <center>
     {% block header %}
-    <h4><a href="/">{% trans "Home" %}</a> | 
+    <h5><a href="/">{% trans "Home" %}</a> | 
 
     {% if user.is_authenticated %}
-        {% trans "Logged in" %}: {{ user.username }} </h4>
+        {% trans "Logged in" %}: {{ user.username }} </h5>
         (<a href="{% url 'auth_logout' %}">{% trans "Log out" %}</a> | 
         <a href="{% url 'auth_password_change' %}">{% trans "Change password" %}</a>)
     {% else %}
@@ -32,15 +35,12 @@
 
 	</center>
 
-		<br><br>
-		<center>
-			<h1>Crowd Shift</h1>
-			<p>This is an example of a HTML landing page on Django web framework</p>
 
+		<center>
 		<br><br>
 			<form action='/search/' method='post'>
 				{% csrf_token %}
-				{{ form.as_table }}
+				{{ form.as_table }} <br> <br>
 				<input type='submit' value='Search' />
 			</form>
 		</center>

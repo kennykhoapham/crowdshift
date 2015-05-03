@@ -10,13 +10,15 @@
 
 	<body>
 
-	<center>
+	<center><a href="/"><h1>crowdshift</h1></a></center>
+
     <div id="header">
+    <center>
     {% block header %}
-    <h4><a href="/">{% trans "Home" %}</a> | 
+    <h5><a href="/">{% trans "Home" %}</a> | 
 
     {% if user.is_authenticated %}
-        {% trans "Logged in" %}: {{ user.username }} </h4>
+        {% trans "Logged in" %}: {{ user.username }} </h5>
         (<a href="{% url 'auth_logout' %}">{% trans "Log out" %}</a> | 
         <a href="{% url 'auth_password_change' %}">{% trans "Change password" %}</a>)
     {% else %}

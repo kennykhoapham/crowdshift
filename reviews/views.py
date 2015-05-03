@@ -22,7 +22,9 @@ def vehicle(request, year, make,model):
 	a_make = results[0].make
 	a_model = results[0].model
 
-	return render_to_response('carprofile.html', {'year': a_year, 'make': a_make, 'model': a_model, 'reviews': reviews})
+	return render(request,'carprofile.html', {'year': a_year, 'make': a_make, 'model': a_model, 'reviews': reviews})
+	#return render_to_response('carprofile.html', {'year': a_year, 'make': a_make, 'model': a_model, 'reviews': reviews})
+
 #def search(request):
 #	results = BlogPost.objects.filter(Q(title__icontains=your_search_query) | Q(intro__icontains=your_search_query) | Q(content__icontains=your_search_query)).order_by('pub_date')
 
@@ -42,7 +44,7 @@ def search(request):
             #created_at = form.cleaned_data['created_at']
             #post = m.Post.objects.create(content=content, created_at=created_at)
             #return HttpResponseRedirect('/result/')
-            return render_to_response('search_result.html', {'results': results,})
+            return render_to_response('search_result.html', {'results': results, 'content':content,})
 
     return render_to_response('search_result.html', {'form': form,})
  

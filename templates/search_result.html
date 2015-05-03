@@ -1,2 +1,38 @@
+{% load i18n %}
+	<center><a href="/"><h1>crowdshift</h1></a></center>
+
+    <div id="header">
+    <center>
+    {% block header %}
+    <h5><a href="/">{% trans "Home" %}</a> | 
+
+    {% if user.is_authenticated %}
+        {% trans "Logged in" %}: {{ user.username }} </h5>
+        (<a href="{% url 'auth_logout' %}">{% trans "Log out" %}</a> | 
+        <a href="{% url 'auth_password_change' %}">{% trans "Change password" %}</a>)
+    {% else %}
+       <a href="{% url 'auth_login' %}">{% trans "Log in" %}</a>
+    {% endif %}
+    <hr />
+    {% endblock %}
+    </div>
+
+    <div id="content">
+    {% block content %}{% endblock %}
+    </div>
+
+	</center>
+
 <h1> Search result(s)</h1>
-<p>{{results}}</p>
+
+
+{% if results|length == 0 %}
+<p>0 result found for <b>{{ content }}<b></p>
+{% endif %}
+
+{% if results|length > 0 %}
+<p>Test list: {{results}}</p>
+{% for car in results %}
+<p><a href="/reviews/{{ car.year }}/{{ car.make }}/{{ car.model }}">{{ car.year }} {{ car.make }} {{ car.model }}</a></p>
+{% endfor %}
+{% endif %}
