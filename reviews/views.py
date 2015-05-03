@@ -22,7 +22,7 @@ def vehicle(request, year, make,model):
 	a_make = results[0].make
 	a_model = results[0].model
 
-	return render(request,'carprofile.html', {'year': a_year, 'make': a_make, 'model': a_model, 'reviews': reviews})
+	return render(request,'carprofile.html', {'year': year, 'make': make, 'model': model, 'reviews': reviews})
 	#return render_to_response('carprofile.html', {'year': a_year, 'make': a_make, 'model': a_model, 'reviews': reviews})
 
 #def search(request):
