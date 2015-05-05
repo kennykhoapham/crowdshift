@@ -7,28 +7,28 @@ from django.db.models import Q
 from reviews.models import Vehicle
 from reviews.models import Review
 from reviews.forms import SearchForm
+from reviews.forms import WriteReviewForm
+from django.contrib.auth.models import User
 
 def index(request):
+	# Landing page
 	form = SearchForm()
 	return render(request,'index.html',{'form': form,})
     #return render_to_response('index.html', context_instance = RequestContext(request))
 
 def vehicle(request, year, make,model):
+	# View the car profile page
 	#reviews = Vehicle.reviews.objects.all()
 	results = Vehicle.objects.filter(Q(make__icontains=make) | Q(model__icontains=model) | Q(year__icontains=year))
-	reviews = Review.objects.filter(Q(vehicle__make__icontains=make) | Q(vehicle__model__icontains=model) | Q(vehicle__year__icontains=year))
-	a_year = results[0].year
-	a_year = results[0].year
-	a_make = results[0].make
-	a_model = results[0].model
+	reviews = Review.objects.filter(vehicle=results)
+	form = WriteReviewForm()
+	#reviews = Review.objects.filter(Q(vehicle__make__icontains=make) | Q(vehicle__model__icontains=model) | Q(vehicle__year__icontains=year))
 
-	return render(request,'carprofile.html', {'year': year, 'make': make, 'model': model, 'reviews': reviews})
+	return render(request,'carprofile.html', {'year': year, 'make': make, 'model': model, 'reviews': reviews, 'form': form,})
 	#return render_to_response('carprofile.html', {'year': a_year, 'make': a_make, 'model': a_model, 'reviews': reviews})
 
-#def search(request):
-#	results = BlogPost.objects.filter(Q(title__icontains=your_search_query) | Q(intro__icontains=your_search_query) | Q(content__icontains=your_search_query)).order_by('pub_date')
-
 def search(request):
+	# Search the database for vehicle
     if request.method == 'GET':
         form = SearchForm()
     else:
@@ -38,15 +38,41 @@ def search(request):
         # If data is valid, proceeds to search
         if form.is_valid():
             content = form.cleaned_data['search']
-            contentList = content.split()
 
             results = Vehicle.objects.filter(Q(make__icontains=content) | Q(model__icontains=content) | Q(year__icontains=content))
-            #created_at = form.cleaned_data['created_at']
-            #post = m.Post.objects.create(content=content, created_at=created_at)
-            #return HttpResponseRedirect('/result/')
             return render_to_response('search_result.html', {'results': results, 'content':content,})
 
     return render_to_response('search_result.html', {'form': form,})
  
     #return render(request, 'search_result.html', {'form': form,})
+
+
+
+def write_review(request, year, make, model):
+	# Add a review to a vehicle
+    if request.method == 'GET':
+        form = WriteReviewForm()
+    else:
+        # A POST request: Handle Form Upload
+        form = WriteReviewForm(request.POST)
+
+        if form.is_valid():
+	        title = form.cleaned_data['title']
+	        body = form.cleaned_data['body']
+	        carToReview = Review(vehicle=Vehicle.objects.get(year=year, make = make, model = model))
+
+	        carToReview.title = title
+	        carToReview.body = body
+	        if request.user.is_authenticated():
+	        	carToReview.author = request.user
+	        carToReview.save()
+	        reviews = Review.objects.filter(vehicle=Vehicle.objects.get(year=year, make = make, model = model))
+
+	    	#return HttpResponseRedirect(reverse("reviews.views.vehicle"), {'year': year, 'make': make, 'model': model, 'reviews': reviews, 'form': form,})
+	    	return render(request,'carprofile.html', {'year': year, 'make': make, 'model': model, 'reviews': reviews, 'form': form,})
+
+    return render_to_response('search_result.html', {'form': form,})
+
+
+
 

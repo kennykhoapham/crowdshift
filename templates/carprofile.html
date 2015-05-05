@@ -44,6 +44,24 @@
 			<p>{{ i.body }}</p>
 
 			{% endfor %}
+
+
+
+		<h4>Write a review: </h4>
+{% if user.is_authenticated %}
+			<form action='/write-review/{{ year }}/{{ make }}/{{ model }}' method='post'>
+				{% csrf_token %}
+				{{ form.as_p }} <br> <br>
+				<input type='submit' value='Submit' />
+			</form>
+
+{%else %}
+		<p>Please login to write a review</p>
+
+{%endif %}
+	
+	
+		
 		</center>
 
 
