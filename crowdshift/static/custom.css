@@ -15,7 +15,7 @@ body {
 }
 
 p {
-	font-family: "Helvetica Neue", Helvetica, sans-serif;
+	font-family: "HelveticaNeue-UltraLight", "Helvetica Neue UltraLight", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
   	font-size: 17px;
   	color:#ffffff;
 }
@@ -38,6 +38,9 @@ p {
     border-radius: 8;
     color: #ffffff;
     background-color: rgba(0,0,0,0.4);
+    font-family: "HelveticaNeue-UltraLight", "Helvetica Neue UltraLight", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
+  	font-size: 17px;
+  	color:#ffffff;
 }
 
 .btn-dark:hover {
@@ -62,4 +65,9 @@ p {
 
 }
 
+.navbar-style{
+	    font-family: "HelveticaNeue-UltraLight", "Helvetica Neue UltraLight", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
+  	font-size: 17px;
+  	color:#ffffff;
+}
 
