@@ -15,83 +15,59 @@
 
 	
 
-<!--Empty black navbar-->
-<div class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-  </div>
-</div>
+
+<nav class="navbar navbar-inverse navbar-fixed-top topnav" role="navigation">
+    <div class="container topnav">
+		{% block header %}
+        	<a class="navbar-brand topnav" href="/">{% trans "Home" %}</a>
+        		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            		<ul class="nav navbar-nav navbar-right">
+                		<li>
+                			{% if user.is_authenticated %}
+		        			{% trans "Logged in as" %} {{ user.username }}
+		        		</li>
+		        		<li>
+		        			<a href="{% url 'auth_logout' %}">{% trans "Log Out" %}</a>
+		        		</li>
+		        		<li>
+                    		<a href="{% url 'auth_password_change' %}">{% trans "Change Password" %}</a>
+                		</li>
+                		<li>
+                			{% else %}
+		       				<a href="{% url 'auth_login' %}">{% trans "Log In" %}</a>
+		    				{% endif %}
+		    				{% endblock %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
 
 
-<!--Landing area at the top-->
-<div class="container-top">
-      <div class="row">
-        <div class="col-lg-12">
-          <center><a href="/"><h1>crowdshift</h1></a>
-		    {% block header %}
-		    <h5><a href="/">{% trans "Home" %}</a> | 
-		    {% if user.is_authenticated %}
-		        {% trans "Logged in" %}: {{ user.username }} </h5>
-		        (<a href="{% url 'auth_logout' %}">{% trans "Log out" %}</a> | 
-		        <a href="{% url 'auth_password_change' %}">{% trans "Change password" %}</a>)
-		    {% else %}
-		       <a href="{% url 'auth_login' %}">{% trans "Log in" %}</a>
-		    {% endif %}
-		    <hr />
-		    {% endblock %}
-		    <div id="content">
-		    {% block content %}{% endblock %}
-		    </div>
-		  </center>
-        	<br>
-		  <center>
-			<br><br>
+
+<header id="top" class="header">
+    <div class="text-vertical-center">
+        <h1>crowdshift</h1>
+        <br>
+		<br>
+        <p>Want to say something about your car?</p>
+		<br>
+	  	<center>
 			<form action='/search/' method='post'>
 				{% csrf_token %}
 				{{ form.as_table }} <br> <br>
-				<input type='submit' value='Search' />
+		   		<button type="submit" class="btn btn-dark btn-lg">Search</button>
 			</form>
-		  </center>
-        </div>
-      </div> 
-</div> 
-
-
-
-<!--Notes: Landing area at the bottom with car cheese -->
-<div class="container info">
-  <div class="row">
-    <div class="col-md-4 text-center">
-    	<img src="static/CarIcon.png" class="img-responsive" alt="">
-      <h2>Cheese</h2>
-      <p>Help HQ with the cheese.</p>
+	    </center>
     </div>
-    <div class="col-md-4 text-center">
-    	<img src="static/CarIcon.png" class="img-responsive" alt="">
-      <h2>Cheese</h2>
-      <p>Cheese cheese cheese.</p>
-    </div>
-    <div class="col-md-4 text-center">
-    	<img src="static/CarIcon.png" class="img-responsive" alt="">
-      <h2>More Cheese</h2>
-      <p>Cheeeeeeeeeese.</p>
-    </div>
-  </div>
+</header>
 
 
 
 
 
-<!-- 			<div class="row">
-			  <div class="col-md-4 col-md-offset-4">
-			    <div class="input-group">
-			      <input type="text" class="form-control" placeholder="Search for a car">
-			      <span class="input-group-btn">
-			        <button class="btn btn-default" type="button">Go!</button>
-			      </span>
-			    </div>
-			  </div>
-			</div> -->
+
 
 
 
