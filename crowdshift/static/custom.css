@@ -65,9 +65,10 @@ p {
 
 }
 
-.navbar-style{
-	    font-family: "HelveticaNeue-UltraLight", "Helvetica Neue UltraLight", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
+.navbar-brand, .font-change {
+	font-family: "HelveticaNeue-UltraLight", "Helvetica Neue UltraLight", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
   	font-size: 17px;
   	color:#ffffff;
 }
+
 
