@@ -48,6 +48,27 @@ def search(request):
 
 
 
+def add_vehicle(request):
+    if request.method == 'GET':
+        form = AddVehicleForm()
+    else:
+        # A POST request: Handle Form Upload
+        form = AddVehicleForm(request.POST)
+
+        if form.is_valid():
+	        year = form.cleaned_data['year']
+	        make = form.cleaned_data['make']
+	        model = form.cleaned_data['model']
+
+	        newCar = Review(vehicle=Vehicle.objects.get(year=year, make = make, model = model))
+
+	        newCar.save()
+
+	    	#return HttpResponseRedirect(reverse("reviews.views.vehicle"), {'year': year, 'make': make, 'model': model, 'reviews': reviews, 'form': form,})
+	    	return render(request,'carprofile.html', {'year': year, 'make': make, 'model': model, 'reviews': reviews, 'form': form,})
+
+    return render_to_response('add_vehicle.html', {'form': form,})
+
 def write_review(request, year, make, model):
 	# Add a review to a vehicle
     if request.method == 'GET':
