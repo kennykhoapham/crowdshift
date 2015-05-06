@@ -16,31 +16,50 @@
 	
 
 
-<!-- Header -->
+<nav class="navbar navbar-inverse navbar-fixed-top topnav" role="navigation">
+    <div class="container topnav">
+		{% block header %}
+        	<a class="navbar-brand topnav" href="/">{% trans "Home" %}</a>
+        		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            		<ul class="nav navbar-nav navbar-right">
+                		<li>
+                			{% if user.is_authenticated %}
+		        			{% trans "Logged in as" %} {{ user.username }}
+		        		</li>
+		        		<li>
+		        			<a href="{% url 'auth_logout' %}">{% trans "Log Out" %}</a>
+		        		</li>
+		        		<li>
+                    		<a href="{% url 'auth_password_change' %}">{% trans "Change Password" %}</a>
+                		</li>
+                		<li>
+                			{% else %}
+		       				<a href="{% url 'auth_login' %}">{% trans "Log In" %}</a>
+		    				{% endif %}
+		    				{% endblock %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+
 <header id="top" class="header">
     <div class="text-vertical-center">
         <h1>crowdshift</h1>
         <br>
-		    {% block header %}
-		    <h5><a href="/">{% trans "Home" %}</a> | 
-		    {% if user.is_authenticated %}
-		        {% trans "Logged in" %}: {{ user.username }} </h5>
-		        (<a href="{% url 'auth_logout' %}">{% trans "Log out" %}</a> | 
-		        <a href="{% url 'auth_password_change' %}">{% trans "Change password" %}</a>)
-		    {% else %}
-		       <a href="{% url 'auth_login' %}">{% trans "Log in" %}</a>
-		    {% endif %}
-		    {% endblock %}
-
-
-		  <br><br>
-		  <center>
+		<br>
+        <p>Want to say something about your car?</p>
+		<br>
+	  	<center>
 			<form action='/search/' method='post'>
 				{% csrf_token %}
 				{{ form.as_table }} <br> <br>
-			   	<button type="submit" class="btn btn-dark btn-lg">Search</button>
+		   		<button type="submit" class="btn btn-dark btn-lg">Search</button>
 			</form>
-		  </center>
+	    </center>
     </div>
 </header>
 
