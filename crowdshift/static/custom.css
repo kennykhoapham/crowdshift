@@ -37,7 +37,7 @@ p {
 .btn-dark {
     border-radius: 8;
     color: #ffffff;
-    background-color: rgba(0,0,0,0.4);
+background-color: rgba(0, 105, 91, 1);
     font-family: "HelveticaNeue-UltraLight", "Helvetica Neue UltraLight", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
   	font-size: 17px;
   	color:#ffffff;
@@ -65,10 +65,24 @@ p {
 
 }
 
+
+
+
+
 .navbar-brand, .font-change {
 	font-family: "HelveticaNeue-UltraLight", "Helvetica Neue UltraLight", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
   	font-size: 17px;
   	color:#ffffff;
+}
+
+
+
+.user_name{
+    font-size:14px;
+    font-weight: bold;
+}
+.comments-list .media{
+    border-bottom: 1px dotted #ccc;
 }
 
 

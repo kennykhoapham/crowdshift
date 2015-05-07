@@ -9,8 +9,9 @@
 		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400' rel='stylesheet' type='text/css'>
 
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	</head>
 
+
+	</head>
 	<body>
 
 	
@@ -31,15 +32,15 @@
 		        		</li>
 		        		<li class="font-change">
                     		<a href="{% url 'auth_password_change' %}">{% trans "Change Password" %}</a>
-                		</li class="font-change">
-                		<li>
+                		</li>
+                		<li class="font-change">
                 			{% else %}
 		       				<a href="{% url 'auth_login' %}">{% trans "Log In" %}</a>
 		    				{% endif %}
 		    				{% endblock %}
-                </li>
-            </ul>
-        </div>
+                		</li>
+            		</ul>
+        		</div>
     </div>
 </nav>
 
@@ -53,13 +54,11 @@
 		<br>
         <p>Search for the make or model of a car to find its crowdshift page.</p>
 		<br>
-	  	<center>
 			<form action='/search/' method='post'>
 				{% csrf_token %}
 				{{ form.as_table }} <br> <br>
 		   		<button type="submit" class="btn btn-dark btn-lg">Search</button>
 			</form>
-	    </center>
     </div>
 </header>
 
