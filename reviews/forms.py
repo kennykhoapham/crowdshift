@@ -10,7 +10,7 @@ class WriteReviewForm(forms.Form):
 	body = forms.CharField(widget=forms.Textarea)
 
 
-class CreateVehicleForm(forms.Form):
-	year = forms.CharField(label="", max_length=4, widget=forms.NumberInput(attrs={'size':'5'}))
-	make = forms.CharField(label="", max_length=20, widget=forms.TextInput(attrs={'size':'10'}))
-	model = forms.CharField(label="", max_length=20, widget=forms.TextInput(attrs={'size':'10'}))
+class AddVehicleForm(forms.Form):
+	year = forms.CharField(label="Year", max_length=4, widget=forms.TextInput(attrs={'size':'5'}))
+	make = forms.CharField(label="Make", max_length=20, widget=forms.TextInput(attrs={'size':'20'}))
+	model = forms.CharField(label="Model", max_length=20, widget=forms.TextInput(attrs={'size':'20'}))

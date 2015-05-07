@@ -6,8 +6,7 @@ from django.template import RequestContext
 from django.db.models import Q
 from reviews.models import Vehicle
 from reviews.models import Review
-from reviews.forms import SearchForm
-from reviews.forms import WriteReviewForm
+from reviews.forms import SearchForm, WriteReviewForm, AddVehicleForm
 from django.contrib.auth.models import User
 
 def index(request):
@@ -19,7 +18,7 @@ def index(request):
 def vehicle(request, year, make,model):
 	# View the car profile page
 	#reviews = Vehicle.reviews.objects.all()
-	results = Vehicle.objects.filter(Q(make__icontains=make) | Q(model__icontains=model) | Q(year__icontains=year))
+	results = Vehicle.objects.filter(Q(make__iexact=make) & Q(model__iexact=model) & Q(year__iexact=year))
 	reviews = Review.objects.filter(vehicle=results)
 	form = WriteReviewForm()
 	#reviews = Review.objects.filter(Q(vehicle__make__icontains=make) | Q(vehicle__model__icontains=model) | Q(vehicle__year__icontains=year))
@@ -60,14 +59,15 @@ def add_vehicle(request):
 	        make = form.cleaned_data['make']
 	        model = form.cleaned_data['model']
 
-	        newCar = Review(vehicle=Vehicle.objects.get(year=year, make = make, model = model))
+	        newCar = Vehicle(year=year, make=make, model=model)
 
 	        newCar.save()
+	        reviews = Review.objects.filter(vehicle=Vehicle.objects.get(year=year, make = make, model = model))
 
 	    	#return HttpResponseRedirect(reverse("reviews.views.vehicle"), {'year': year, 'make': make, 'model': model, 'reviews': reviews, 'form': form,})
 	    	return render(request,'carprofile.html', {'year': year, 'make': make, 'model': model, 'reviews': reviews, 'form': form,})
 
-    return render_to_response('add_vehicle.html', {'form': form,})
+    return render(request,'add_vehicle.html', {'form': form,})
 
 def write_review(request, year, make, model):
 	# Add a review to a vehicle
