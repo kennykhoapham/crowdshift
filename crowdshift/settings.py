@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'reviews',
+    'storages',
     
 )
 
@@ -123,3 +124,8 @@ STATICFILES_DIRS = (
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+AWS_ACCESS_KEY_ID = 'AKIAIQ4PMYG2GX2CVXGQ'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'crowdshift'

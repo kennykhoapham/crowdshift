@@ -38,7 +38,9 @@ def search(request):
         if form.is_valid():
             content = form.cleaned_data['search']
 
-            results = Vehicle.objects.filter(Q(make__icontains=content) | Q(model__icontains=content) | Q(year__icontains=content))
+            content = content.split()
+            for term in content:
+            	results = Vehicle.objects.filter(Q(make__icontains=term) | Q(model__icontains=term) | Q(year__icontains=term))
             return render_to_response('search_result.html', {'results': results, 'content':content,})
 
     return render_to_response('search_result.html', {'form': form,})
@@ -95,5 +97,10 @@ def write_review(request, year, make, model):
     return render_to_response('search_result.html', {'form': form,})
 
 
-def user_profile(request):
-	return render(request,'user_profile.html')
+def user_profile(request, username):
+
+	return render(request,'user_profile.html', {'username':username,})
+
+
+#def upload_profile_photo(request):
+
