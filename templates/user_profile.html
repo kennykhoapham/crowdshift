@@ -11,7 +11,7 @@
 	</head>
 
 	<body>
-		
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
 		{% block header %}
@@ -38,6 +38,16 @@
         		</div>
     </div>
 </nav>
+
+<br><br><br><br><br><br>
+
+<img src="{{image.photo.url}}" alt="Smiley face" height="200" width="200">
+
+			<form action='/profile-photo/{{user.username}}' method='post'>
+				{% csrf_token %}
+				{{ form.as_p }} <br> <br>
+		   		<button type="submit" class="btn btn-dark btn-lg">Upload</button>
+			</form>
 
 
 

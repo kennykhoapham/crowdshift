@@ -21,9 +21,9 @@ class Review(models.Model):
 	def __unicode__(self):
 		return str(self.title) +  ' by ' + str(self.author)
 
-#class ProfilePhoto(models.Model):
-#	user = models.ForeignKey(User)
-#	photo = FileField(upload_to='profile-photos')
+class ProfilePhoto(models.Model):
+	user = models.ForeignKey(User)
+	photo = models.FileField(upload_to='profile-photos')
 
 
 #class ProfilePhoto(models.Model):
