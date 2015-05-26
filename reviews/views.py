@@ -19,8 +19,8 @@ def vehicle(request, year, make,model):
 	# View the car profile page
 	#reviews = Vehicle.reviews.objects.all()
 	results = Vehicle.objects.filter(Q(make__iexact=make) & Q(model__iexact=model) & Q(year__iexact=year))
-	reviews = Review.objects.filter(vehicle=results)
-	vehiclePhoto = VehiclePhoto.objects.get(vehicle=results)
+	reviews = Review.objects.select_related().filter(vehicle=results)
+	vehiclePhoto = VehiclePhoto.objects.select_related().get(vehicle=results)
 	form = WriteReviewForm()
 	#reviews = Review.objects.filter(Q(vehicle__make__icontains=make) | Q(vehicle__model__icontains=model) | Q(vehicle__year__icontains=year))
 
