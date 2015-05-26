@@ -25,5 +25,11 @@ class ProfilePhoto(models.Model):
 	user = models.ForeignKey(User)
 	photo = models.FileField(upload_to='profile-photos')
 
+class ReviewPhoto(models.Model):
+	review = models.ForeignKey(Review)
+	photo = models.FileField(upload_to='review-photos')
 
+class VehiclePhoto(models.Model):
+	vehicle = models.ForeignKey(Vehicle)
+	photo = models.FileField(upload_to='vehicle-photos')
 #class ProfilePhoto(models.Model):

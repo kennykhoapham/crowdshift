@@ -3,7 +3,7 @@
 <htmln lang="en">
 	<head>
 		<meta charset="utf-8"> 
-		<link rel="stylesheet" href="static/custom.css" >
+		<link rel="stylesheet" href="{{ STATIC_URL }}/custom.css" >
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 		
@@ -41,7 +41,7 @@
 
 <br><br><br><br><br><br>
 
-<img src="{{image.photo.url}}" alt="Smiley face" height="200" width="200">
+<img src="{{image.photo.url}}" alt="Profile Photo" height="300" width="300">
 
 			<form action='/profile-photo/{{user.username}}' method='post'>
 				{% csrf_token %}

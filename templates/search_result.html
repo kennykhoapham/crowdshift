@@ -1,41 +1,65 @@
-
-
 {% load i18n %}
-	<center><a href="/"><h1>crowdshift</h1></a></center>
+<!DOCTYPE html>
+<htmln lang="en">
+    <head>
+        <meta charset="utf-8"> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}/custom.css" >
+        <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400' rel='stylesheet' type='text/css'>
 
-    <div id="header">
-    <center>
-    {% block header %}
-    <h5><a href="/">{% trans "Home" %}</a> | 
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
-    {% if user.is_authenticated %}
-        {% trans "Logged in" %}: {{ user.username }} </h5>
-        (<a href="{% url 'auth_logout' %}">{% trans "Log out" %}</a> | 
-        <a href="{% url 'auth_password_change' %}">{% trans "Change password" %}</a>)
-    {% else %}
-       <a href="{% url 'auth_login' %}">{% trans "Log in" %}</a>
-    {% endif %}
-    <hr />
-    {% endblock %}
+
+    </head>
+    <body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        {% block header %}
+            <a class="navbar-brand" href="/">{% trans "Home" %}</a>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            {% if user.is_authenticated %}
+                            {% trans "Logged in as" %} {{ user.username }}
+                        </li>
+                        <li class="font-change">
+                            <a href="{% url 'auth_logout' %}">{% trans "Log Out" %}</a>
+                        </li>
+                        <li class="font-change">
+                            <a href="{% url 'auth_password_change' %}">{% trans "Change Password" %}</a>
+                        </li>
+                        <li class="font-change">
+                            {% else %}
+                            <a href="{% url 'auth_login' %}">{% trans "Log In" %}</a>
+                            {% endif %}
+                            {% endblock %}
+                        </li>
+                    </ul>
+                </div>
     </div>
+</nav>
+<br><br>
 
-    <div id="content">
-    {% block content %}{% endblock %}
+<header class="header">
+    <div class="text-vertical-center">
+        <h1>Search result(s)</h1>
+        <br>
+        <br>
+                {% if results|length == 0 %}
+                <p>0 result found for <b>{{ content }}<b></p>
+                <p><a href="/add-vehicle">Add your own vehicle</a></p>
+                {% endif %}
+
+                {% if results|length > 0 %}
+                <p>Test list: {{results}}</p>
+                {% for car in results %}
+                <p><a href="/reviews/{{ car.year }}/{{ car.make }}/{{ car.model }}">{{ car.year }} {{ car.make }} {{ car.model }}</a></p>
+                {% endfor %}
+                {% endif %}
+        <br>
     </div>
-
-	</center>
-
-<h1> Search result(s)</h1>
-
-
-{% if results|length == 0 %}
-<p>0 result found for <b>{{ content }}<b></p>
-<p><a href="/add-vehicle">Add your own vehicle</a></p>
-{% endif %}
-
-{% if results|length > 0 %}
-<p>Test list: {{results}}</p>
-{% for car in results %}
-<p><a href="/reviews/{{ car.year }}/{{ car.make }}/{{ car.model }}">{{ car.year }} {{ car.make }} {{ car.model }}</a></p>
-{% endfor %}
-{% endif %}
+</header>
+    </body>
+</html>

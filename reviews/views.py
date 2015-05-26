@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.db.models import Q
-from reviews.models import Vehicle, ProfilePhoto
+from reviews.models import Vehicle, ProfilePhoto, ReviewPhoto
 from reviews.models import Review
 from reviews.forms import SearchForm, WriteReviewForm, AddVehicleForm, AddProfilePhotoForm
 from django.contrib.auth.models import User
@@ -41,7 +41,7 @@ def search(request):
             content = content.split()
             for term in content:
             	results = Vehicle.objects.filter(Q(make__icontains=term) | Q(model__icontains=term) | Q(year__icontains=term))
-            return render_to_response('search_result.html', {'results': results, 'content':content,})
+            return render(request,'search_result.html', {'results': results, 'content':content,})
 
     return render_to_response('search_result.html', {'form': form,})
  
@@ -82,13 +82,17 @@ def write_review(request, year, make, model):
         if form.is_valid():
 	        title = form.cleaned_data['title']
 	        body = form.cleaned_data['body']
+	        photos = form.cleaned_data['photo']
 	        carToReview = Review(vehicle=Vehicle.objects.get(year=year, make = make, model = model))
+	        
 
 	        carToReview.title = title
 	        carToReview.body = body
 	        if request.user.is_authenticated():
 	        	carToReview.author = request.user
 	        carToReview.save()
+	        reviewPhoto = ReviewPhoto(review=carToReview,photo=photos)
+	        reviewPhoto.save()
 	        reviews = Review.objects.filter(vehicle=Vehicle.objects.get(year=year, make = make, model = model))
 
 	    	#return HttpResponseRedirect(reverse("reviews.views.vehicle"), {'year': year, 'make': make, 'model': model, 'reviews': reviews, 'form': form,})
