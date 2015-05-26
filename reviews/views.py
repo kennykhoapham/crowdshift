@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.db.models import Q
-from reviews.models import Vehicle, ProfilePhoto, ReviewPhoto
+from reviews.models import Vehicle, ProfilePhoto, ReviewPhoto, VehiclePhoto
 from reviews.models import Review
 from reviews.forms import SearchForm, WriteReviewForm, AddVehicleForm, AddProfilePhotoForm
 from django.contrib.auth.models import User
@@ -20,10 +20,11 @@ def vehicle(request, year, make,model):
 	#reviews = Vehicle.reviews.objects.all()
 	results = Vehicle.objects.filter(Q(make__iexact=make) & Q(model__iexact=model) & Q(year__iexact=year))
 	reviews = Review.objects.filter(vehicle=results)
+	vehiclePhoto = VehiclePhoto.objects.get(vehicle=results)
 	form = WriteReviewForm()
 	#reviews = Review.objects.filter(Q(vehicle__make__icontains=make) | Q(vehicle__model__icontains=model) | Q(vehicle__year__icontains=year))
 
-	return render(request,'carprofile.html', {'year': year, 'make': make, 'model': model, 'reviews': reviews, 'form': form,})
+	return render(request,'carprofile.html', {'year': year, 'make': make, 'model': model, 'reviews': reviews, 'form': form, 'vehiclePhoto': vehiclePhoto})
 	#return render_to_response('carprofile.html', {'year': a_year, 'make': a_make, 'model': a_model, 'reviews': reviews})
 
 def search(request):
