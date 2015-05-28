@@ -53,7 +53,9 @@
 
 <h1 class="text-center">{{ year }} {{ make }} {{ model }}</h1>
 <br>
-<center><img src="{{vehiclePhoto.photo.url}}" alt="Vehicle Photo" width="500"></center>
+{% if vehiclePhoto.count >= 1 %}
+<center><img src="{{vehiclePhoto.0.photo.url}}" alt="Vehicle Photo" width="500"></center>
+{% endif %}
 <h3 class="text-center">Overall Rating: 4.5</h3>
 
 
@@ -71,7 +73,7 @@
                         			<div class="media-body">                                
                               			<h4 class="media-heading user_name">{{ i.title }} by {{i.author}}</h4>
                               			{{ i.body }}               
-                              			<p><small>I own one.</small></p>
+                              			<p class ="comments-list"><small>I own one.</small></p>
                             		</div>
                       	</div>
           		{% endfor %}

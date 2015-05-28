@@ -40,7 +40,9 @@
                 </div>
     </div>
 </nav>
-<br><br>
+
+
+
 
 <header class="header">
     <div class="text-vertical-center">
@@ -53,7 +55,7 @@
                 {% endif %}
 
                 {% if results|length > 0 %}
-                <p>Test list: {{results}}</p>
+                <!-- <p>Test list: {{results}}</p> -->
                 {% for car in results %}
                 <p><a href="/reviews/{{ car.year }}/{{ car.make }}/{{ car.model }}">{{ car.year }} {{ car.make }} {{ car.model }}</a></p>
                 {% endfor %}

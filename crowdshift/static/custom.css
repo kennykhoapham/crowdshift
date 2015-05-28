@@ -20,6 +20,11 @@ p {
   	color:#ffffff;
 }
 
+a {
+  font-family: "HelveticaNeue-UltraLight", "Helvetica Neue UltraLight", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+}
 .text-vertical-center {
     display: table-cell;
     text-align: center;
@@ -67,7 +72,10 @@ background-color: rgba(0, 105, 91, 1);
 
 
 
-
+.navbar {
+    background: rgba(0,0,0,0);
+    border: 0px;
+  }
 
 .navbar-brand, .font-change {
 	font-family: "HelveticaNeue-UltraLight", "Helvetica Neue UltraLight", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
@@ -83,6 +91,10 @@ background-color: rgba(0, 105, 91, 1);
 }
 .comments-list .media{
     border-bottom: 1px dotted #ccc;
+}
+
+.comments-list{
+  color: #000000;
 }
 
 
