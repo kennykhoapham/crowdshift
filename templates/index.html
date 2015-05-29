@@ -61,13 +61,20 @@
     </div>
 </header>
 
+<center>
+<div class "featured">
+		<h3>Featured vehicles</h3>
+		{% for i in vehicles %}
+			{% for img in i.photo %}
+				<img src="{{ img.photo.url }}" width="200">
+			{% endfor %}
+		<p class="font-change"><a href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}" class="font-change">{{i.year}} {{i.make}} {{ i.model }}</a></p>
 
-<div class "featured-vehicles">
-		<p>Explore featured vehicles:</p>
-
+		{% endfor %}
 
 
 </div>
+</center>
 
 
 

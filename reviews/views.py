@@ -12,7 +12,10 @@ from django.contrib.auth.models import User
 def index(request):
 	# Landing page
 	form = SearchForm()
-	return render(request,'index.html',{'form': form,})
+	vehicles = Vehicle.objects.all()[:5]
+	for vehicle in vehicles:
+		vehicle.photo = VehiclePhoto.objects.filter(vehicle=vehicle)
+	return render(request,'index.html',{'form': form, 'vehicles': vehicles,})
     #return render_to_response('index.html', context_instance = RequestContext(request))
 
 def vehicle(request, year, make,model):
