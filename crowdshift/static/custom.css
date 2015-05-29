@@ -77,10 +77,14 @@ background-color: rgba(0, 105, 91, 1);
     border: 0px;
   }
 
+.navbar-car{
+  background: rgba(255, 255, 255, 1);
+}
+
 .navbar-brand, .font-change {
 	font-family: "HelveticaNeue-UltraLight", "Helvetica Neue UltraLight", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
   	font-size: 17px;
-  	color:#ffffff;
+  	color:#000000;
 }
 
 
@@ -95,6 +99,29 @@ background-color: rgba(0, 105, 91, 1);
 
 .comments-list{
   color: #000000;
+  width: 80%;
 }
 
+.caption {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
+    position: absolute;
+    top: 40%;
+    left: 0;
+    width: 100%;
+    color: #ffffff;
+    font-size: 80px;
+}
+
+
+.parallax img{
+  width: 100%;
+  position: absolute;
+  display:inline-block;
+  background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* IE10+ */
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C */
+}
 

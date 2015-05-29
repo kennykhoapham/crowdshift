@@ -6,15 +6,18 @@
 		<link rel="stylesheet" href="{{ STATIC_URL }}custom.css" >
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-		
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>-->
+		  <!-- Compiled and minified JavaScript -->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
 	</head>
 
 	<body>
 
 
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-car navbar-fixed-top">
     <div class="container">
 		{% block header %}
         	<a class="navbar-brand" href="/">{% trans "Home" %}</a>
@@ -22,14 +25,23 @@
             		<ul class="nav navbar-nav navbar-right">
                 		<li>
                 			{% if user.is_authenticated %}
-		        			{% trans "Logged in as" %} {{ user.username }}
 		        		</li>
-		        		<li class="font-change">
+
+		<li class="dropdown">
+          <a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown" role="button" aria-expanded="false">{{ user.username }}<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="{% url 'auth_logout' %}">{% trans "Log Out" %}</a></li>
+            <li><a href="{% url 'auth_password_change' %}">{% trans "Change Password" %}</a></li>
+          </ul>
+
+      	</li>
+
+<!-- 		        		<li class="font-change">
 		        			<a href="{% url 'auth_logout' %}">{% trans "Log Out" %}</a>
 		        		</li>
 		        		<li class="font-change">
                     		<a href="{% url 'auth_password_change' %}">{% trans "Change Password" %}</a>
-                		</li>
+                		</li> -->
                 		<li class="font-change">
                 			{% else %}
 		       				<a href="{% url 'auth_login' %}">{% trans "Log In" %}</a>
@@ -43,19 +55,33 @@
 
 
 
+
+        
+
+
 <!-- start review stuff -->
 <div id="content">
 {% block content %}{% endblock %}
 </div>
 
-<br><br>
+
 <br><br>
 
-<h1 class="text-center">{{ year }} {{ make }} {{ model }}</h1>
+<!-- <h1 class="text-center">{{ year }} {{ make }} {{ model }}</h1> -->
 <br>
+
+
 {% if vehiclePhoto.count >= 1 %}
-<center><img src="{{vehiclePhoto.0.photo.url}}" alt="Vehicle Photo" width="500"></center>
+    <div class="parallax-container">
+      <div class="parallax">
+      	<img src="{{vehiclePhoto.0.photo.url}}">
+      </div>
+        <div class="caption">
+            <center>{{ year }} {{ make }} {{ model }}</center>
+        </div>
+    </div>
 {% endif %}
+
 <h3 class="text-center">Overall Rating: 4.5</h3>
 
 
@@ -63,7 +89,7 @@
 
 <div class="container">
     <div class="row">         
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-12 col-md-offset-1">
             <div class="comments-list">
            		{% for i in reviews %}
                   	<div class="page-header"></div> 
@@ -101,13 +127,12 @@
 {%endif %}
 </center>
 	
-	
-		
-		
 
-
-
-
+<script>
+$(document).ready(function(){
+	$('.parallax').parallax();
+});
+</script>
 
 
 
