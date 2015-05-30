@@ -66,7 +66,7 @@
 		<h3>Featured vehicles</h3>
 		{% for i in vehicles %}
 			{% for img in i.photo %}
-				<img src="{{ img.photo.url }}" width="200">
+				<a href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}"><img src="{{ img.photo.url }}" width="200"></a>
 			{% endfor %}
 		<p class="font-change"><a href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}" class="font-change">{{i.year}} {{i.make}} {{ i.model }}</a></p>
 
