@@ -73,7 +73,7 @@ background-color: rgba(0, 105, 91, 1);
     position: relative;
     width: 100%;
     height: 100%;
-    background: linear-gradient( rgba(2, 2, 2, 0.02), rgba(0, 0, 0, 0.79) ), url(orangeroadblurr.jpg) no-repeat center center scroll;
+    background-color: #E6EBE0;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -121,6 +121,15 @@ background-color: rgba(0, 105, 91, 1);
     font-size: 80px;
 }
 
+.caption-small {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
+    position: absolute;
+    top: 40%;
+    left: 0;
+    width: 100%;
+    color: #ffffff;
+    font-size: 20px;
+}
 
 .parallax img{
   width: 100%;
