@@ -9,7 +9,7 @@ class SearchForm(forms.Form):
 class WriteReviewForm(forms.Form):
 	title = forms.CharField(label="Title", max_length=60, widget=forms.TextInput(attrs={'size':'40'}))
 	body = forms.CharField(widget=forms.Textarea)
-	photo = forms.FileField(required=False)
+	#photo = forms.FileField(required=False)
 
 
 class AddVehicleForm(forms.Form):

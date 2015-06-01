@@ -87,7 +87,7 @@ def write_review(request, year, make, model):
         if form.is_valid():
 	        title = form.cleaned_data['title']
 	        body = form.cleaned_data['body']
-	        photos = form.cleaned_data['photo']
+	        #photos = form.cleaned_data['photo']
 	        carToReview = Review(vehicle=Vehicle.objects.get(year=year, make = make, model = model))
 	        
 
@@ -96,12 +96,12 @@ def write_review(request, year, make, model):
 	        if request.user.is_authenticated():
 	        	carToReview.author = request.user
 	        carToReview.save()
-	        reviewPhoto = ReviewPhoto(review=carToReview,photo=photos)
-	        reviewPhoto.save()
+	        #reviewPhoto = ReviewPhoto(review=carToReview,photo=photos)
+	        #reviewPhoto.save()
 	        reviews = Review.objects.filter(vehicle=Vehicle.objects.get(year=year, make = make, model = model))
-
+	        vehiclePhoto = VehiclePhoto.objects.select_related().filter(vehicle=Vehicle.objects.get(year=year, make = make, model = model))
 	    	#return HttpResponseRedirect(reverse("reviews.views.vehicle"), {'year': year, 'make': make, 'model': model, 'reviews': reviews, 'form': form,})
-	    	return render(request,'carprofile.html', {'year': year, 'make': make, 'model': model, 'reviews': reviews, 'form': form,})
+	    	return render(request,'carprofile.html', {'year': year, 'make': make, 'model': model, 'reviews': reviews, 'form': form,'vehiclePhoto': vehiclePhoto})
 
     return render_to_response('search_result.html', {'form': form,})
 

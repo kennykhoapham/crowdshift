@@ -4,9 +4,10 @@
 	<head>
 		<meta charset="utf-8"> 
 		<link rel="stylesheet" href="{{ STATIC_URL }}custom.css" >
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
+		
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		  <!-- Compiled and minified JavaScript -->
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -112,20 +113,28 @@
 
 
 
-<center><br><br><br>
+<div class="container">
+    <div class="row">         
+        <div class="col-md-12 col-md-offset-1">
 		<h4 class="text-center">Write a review</h4>
-{% if user.is_authenticated %}
+			{% if user.is_authenticated %}
 			<form action='/write-review/{{ year }}/{{ make }}/{{ model }}' method='post'>
+				{% load widget_tweaks %}
 				{% csrf_token %}
-				{{ form.as_p }} <br> <br>
+				{% render_field form.title class+="input-large" placeholder=form.title.label %}
+				{% render_field form.body class+="form-control"%}
+				<br> <br>
 				<input type='submit' value='Submit' />
 			</form>
 
-{%else %}
-		<h4 class="text-center">Please login to write a review</h4>
+			{%else %}
+			<h4 class="text-center">Please login to write a review</h4>
+			{%endif %}
+		</div>
+	</div>
+</div>
 
-{%endif %}
-</center>
+
 	
 
 <script type="text/javascript">$('.dropdown-toggle').dropdown()</script>

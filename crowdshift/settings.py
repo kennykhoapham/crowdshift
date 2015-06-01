@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'reviews',
     'storages',
     'debug_toolbar',
+    'widget_tweaks',
     
 )
 

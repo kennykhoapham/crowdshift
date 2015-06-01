@@ -101,6 +101,7 @@ background-color: rgba(0, 105, 91, 1);
 .user_name{
     font-size:14px;
     font-weight: bold;
+    color: #000000;
 }
 .comments-list .media{
     border-bottom: 1px dotted #ccc;
