@@ -54,8 +54,10 @@
         <p>Search for the make or model of a car to find its crowdshift page.</p>
 		<br>
 			<form action='/search/' method='post'>
+				{% load widget_tweaks %}
 				{% csrf_token %}
-				{{ form.as_table }} <br> <br>
+				{% render_field form.search class+="input-large" placeholder="Ex: 2015 Toyota Camry" %}
+				<br> <br>
 		   		<button type="submit" class="btn btn-dark btn-lg">Search</button>
 			</form>
     </div>
