@@ -66,7 +66,7 @@
 <center>
 <div class="row">
 	<div class="featured">
-	<h3>Featured Vehicles</h3>
+	<p style="font-size: 28px">Featured Vehicles</p><br>
   <div class="col-md-4">
 
 			{% for i in vehicles %}
@@ -75,7 +75,7 @@
 				{% endfor %}
 
 
-			<p class="font-change"><a href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}" class="font-change">{{i.year}} {{i.make}} {{ i.model }}</a></p>
+			<a href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}" class="font-change"><p>{{i.year}} {{i.make}} {{ i.model }}</p></a>
 
 			{% endfor %}
 		</div>
@@ -88,7 +88,7 @@
 				{% endfor %}
 
 
-			<p class="font-change"><a href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}" class="font-change">{{i.year}} {{i.make}} {{ i.model }}</a></p>
+			<a href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}" class="font-change"><p>{{i.year}} {{i.make}} {{ i.model }}</p></a>
 
 			{% endfor %}
   	</div>
@@ -102,7 +102,7 @@
 				{% endfor %}
 
 
-			<p class="font-change"><a href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}" class="font-change">{{i.year}} {{i.make}} {{ i.model }}</a></p>
+			<a href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}" class="font-change"><p>{{i.year}} {{i.make}} {{ i.model }}</p></a>
 
 			{% endfor %}
   	</div>
