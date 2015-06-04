@@ -88,12 +88,17 @@ background-color: rgba(173, 106, 12, 0.56);
 
 .navbar-car{
   background: rgba(255, 255, 255, 1);
+  height:50px;
+  line-height:50px;
+  margin-bottom: 0px;
 }
 
 .navbar-brand, .font-change {
 	font-family: "HelveticaNeue-UltraLight", "Helvetica Neue UltraLight", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
-  	font-size: 17px;
+  	font-size: 19px;
   	color:#000000;
+    vertical-align: middle;
+
 }
 
 
