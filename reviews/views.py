@@ -12,10 +12,16 @@ from django.contrib.auth.models import User
 def index(request):
 	# Landing page
 	form = SearchForm()
-	vehicles = Vehicle.objects.all()[:5]
+	vehicles = Vehicle.objects.select_related().all()[:2]
+	vehicles2 = Vehicle.objects.select_related().all()[2:4]
+	vehicles3 = Vehicle.objects.select_related().all()[4:6]
 	for vehicle in vehicles:
-		vehicle.photo = VehiclePhoto.objects.filter(vehicle=vehicle)
-	return render(request,'index.html',{'form': form, 'vehicles': vehicles,})
+		vehicle.photo = VehiclePhoto.objects.select_related().filter(vehicle=vehicle)
+	for vehicle in vehicles2:
+		vehicle.photo = VehiclePhoto.objects.select_related().filter(vehicle=vehicle)
+	for vehicle in vehicles3:
+		vehicle.photo = VehiclePhoto.objects.select_related().filter(vehicle=vehicle)
+	return render(request,'index.html',{'form': form, 'vehicles': vehicles,'vehicles2': vehicles2, 'vehicles3': vehicles3,})
     #return render_to_response('index.html', context_instance = RequestContext(request))
 
 def vehicle(request, year, make,model):
@@ -69,10 +75,11 @@ def add_vehicle(request):
 	        newCar = Vehicle(year=year, make=make, model=model)
 
 	        newCar.save()
-	        reviews = Review.objects.filter(vehicle=Vehicle.objects.get(year=year, make = make, model = model))
+	        #reviews = Review.objects.filter(vehicle=Vehicle.objects.get(year=year, make = make, model = model))
+	        #vehiclePhoto = VehiclePhoto.objects.select_related().filter(vehicle=Vehicle.objects.get(year=year, make = make, model = model))
 
 	    	#return HttpResponseRedirect(reverse("reviews.views.vehicle"), {'year': year, 'make': make, 'model': model, 'reviews': reviews, 'form': form,})
-	    	return render(request,'carprofile.html', {'year': year, 'make': make, 'model': model, 'reviews': reviews, 'form': form,})
+	    	return render(request,'vehicle_added.html', {'year': year, 'make': make, 'model': model,})
 
     return render(request,'add_vehicle.html', {'form': form,})
 
@@ -106,15 +113,15 @@ def write_review(request, year, make, model):
     return render_to_response('search_result.html', {'form': form,})
 
 
-def user_profile(request, username):
+def my_profile(request):
 	form = AddProfilePhotoForm()
 	if request.user.is_authenticated():
 
 		image = ProfilePhoto.objects.get(user=request.user)
 
-		return render(request,'user_profile.html', {'username':username,'form':form, 'image':image})
+		return render(request,'my_profile.html', {'username':request.user.username,'form':form, 'image':image})
 	else:
-		return render(request,'user_profile.html', {'username':username,'form':form,})
+		return render(request,'my_profile.html', {'username':username,'form':form,})
 
 
 	
@@ -128,15 +135,15 @@ def upload_profile_photo(request,username):
         form = AddProfilePhotoForm(request.POST)
 
         if form.is_valid():
-        	imageForm = form.cleaned_data['imageForm']
+        	photo = form.cleaned_data['photo']
 
-        	if request.user.is_authenticated():
-        		profilePhoto = ProfilePhoto(user=user.username,photo=imageForm)
-			
-			image = ProfilePhoto.objects.filter(user=request.user)
+        	#if request.user.is_authenticated():
+        	obj, created = ProfilePhoto.objects.update_or_create(user=request.user,photo=photo)
+        	#profilePhoto.save()
+        	image = ProfilePhoto.objects.filter(user=request.user)
 
 	    	#return HttpResponseRedirect(reverse("reviews.views.vehicle"), {'year': year, 'make': make, 'model': model, 'reviews': reviews, 'form': form,})
-	    	return render(request,'user_profile.html', {'username':username,'form':form, 'image':image})
+	    	return render(request,'my_profile.html', {'username':username,'form':form, 'image':image})
 
     return render_to_response('search_result.html', {'form': form,})
 

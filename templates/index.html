@@ -56,7 +56,7 @@
 			<form action='/search/' method='post'>
 				{% load widget_tweaks %}
 				{% csrf_token %}
-				{% render_field form.search class+="input-large" placeholder="Ex: 2015 Toyota Camry" %}
+				{% render_field form.search class+="input-large" type+="search" placeholder="Ex: 2015 Toyota Camry" %}
 				<br> <br>
 		   		<button type="submit" class="btn btn-dark btn-lg">Search</button>
 			</form>
@@ -66,19 +66,53 @@
 <center>
 <div class="row">
 	<div class="featured">
-			<h3>Featured vehicles</h3>
+	<h3>Featured Vehicles</h3>
+  <div class="col-md-4">
+
 			{% for i in vehicles %}
 				{% for img in i.photo %}
-					<a href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}"><img src="{{ img.photo.url }}" width="300"></a>
+					<a href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}"><img src="{{ img.photo.url }}" style="max-width: 300px; max-height: 200px;"></a>
 				{% endfor %}
 
 
 			<p class="font-change"><a href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}" class="font-change">{{i.year}} {{i.make}} {{ i.model }}</a></p>
 
 			{% endfor %}
+		</div>
+  	<div class="col-md-4">
+
+
+			{% for i in vehicles2 %}
+				{% for img in i.photo %}
+					<a href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}"><img src="{{ img.photo.url }}" style="max-width: 300px; max-height: 200px;"></a>
+				{% endfor %}
+
+
+			<p class="font-change"><a href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}" class="font-change">{{i.year}} {{i.make}} {{ i.model }}</a></p>
+
+			{% endfor %}
+  	</div>
+
+  	<div class="col-md-4">
+
+
+			{% for i in vehicles3 %}
+				{% for img in i.photo %}
+					<a href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}"><img src="{{ img.photo.url }}" style="max-width: 300px; max-height: 200px;"></a>
+				{% endfor %}
+
+
+			<p class="font-change"><a href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}" class="font-change">{{i.year}} {{i.make}} {{ i.model }}</a></p>
+
+			{% endfor %}
+  	</div>
+
+
+
 
 
 	</div>
+
 </div>
 </center>
 

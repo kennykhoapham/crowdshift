@@ -3,11 +3,11 @@
 <htmln lang="en">
 	<head>
 		<meta charset="utf-8"> 
-		<link rel="stylesheet" href="{{ STATIC_URL }}custom.css" >
+		
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-		
+		<link rel="stylesheet" href="{{ STATIC_URL }}custom.css" >
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		  <!-- Compiled and minified JavaScript -->
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -15,7 +15,6 @@
 	</head>
 
 	<body>
-
 
 
 <nav class="navbar navbar-car navbar-fixed-top">
@@ -82,14 +81,14 @@
     </div>
 {% endif %}
 
-<h3 class="text-center">Overall Rating: 4.5</h3>
-
-
+<!-- <h3 class="text-center">Overall Rating: 4.5</h3> -->
+<br>
+<center><a class="btn btn-default center" href="#review" role="button">Write A Review</a></center>
 
 
 <div class="container">
     <div class="row">         
-        <div class="col-md-12 col-md-offset-1">
+        <div class="col-md-8 col-md-offset-2">
             <div class="comments-list">
            		{% for i in reviews %}
                   	<div class="page-header"></div> 
@@ -98,9 +97,10 @@
                             	<a class="media-left"><img src="http://s3-us-west-2.amazonaws.com/curely-static/v5/images/topmenu/icon_profile_face_off.png"></a>
                         			<div class="media-body">                                
                               			<h4 class="media-heading user_name">{{ i.title }}</h4>
-                              			<p class ="comments-list"><small>{{i.author}} on {{i.created}}</small></p>
+                              			<p class ="comments-list"><small><strong>{{i.author}}</strong> on {{i.created}}</small></p>
                               			{{ i.body }}               
-                              			<p class ="comments-list"><small>I own one.</small></p>
+                              			<!-- <p class ="comments-list"><small>I own one.</small></p> -->
+                              			<br><br>
                             		</div>
                       	</div>
           		{% endfor %}
@@ -111,18 +111,20 @@
 
 
 
-
+<A NAME="review"></a>
 
 <div class="container">
     <div class="row">         
-        <div class="col-md-12 col-md-offset-1">
-		<h4 class="text-center">Write a review</h4>
+        <div class="col-md-8 col-md-offset-2">
+		<h4 class="text-center">Write A Review</h4>
+
 			{% if user.is_authenticated %}
 			<form action='/write-review/{{ year }}/{{ make }}/{{ model }}' method='post'>
 				{% load widget_tweaks %}
 				{% csrf_token %}
-				{% render_field form.title class+="input-large" placeholder=form.title.label %}
-				{% render_field form.body class+="form-control"%}
+				{% render_field form.title class+="form-group input-lg" placeholder=form.title.label %}
+				<br>
+				{% render_field form.body class+="form-control" placeholder=form.body.label rows=6 %}
 				<br> <br>
 				<input type='submit' value='Submit' />
 			</form>
@@ -130,6 +132,7 @@
 			{%else %}
 			<h4 class="text-center">Please login to write a review</h4>
 			{%endif %}
+
 		</div>
 	</div>
 </div>
