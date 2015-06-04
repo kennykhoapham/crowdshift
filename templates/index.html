@@ -25,7 +25,8 @@
             		<ul class="nav navbar-nav navbar-right">
                 		<li class ="font-change">
                 			{% if user.is_authenticated %}
-		        			<p class ="navbar-brand">{% trans "Logged in as" %} {{ user.username }}</p>
+                			<a>{% trans "Logged in as" %} {{ user.username }}</a>
+		        			<!-- <p class ="navbar-brand">{% trans "Logged in as" %} {{ user.username }}</p> -->
 		        		</li>
 		        		<li class="font-change">
 		        			<a href="{% url 'auth_logout' %}">{% trans "Log Out" %}</a>
