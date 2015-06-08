@@ -15,11 +15,21 @@
 
 <div class="login">
 <form action="" method="post">
+{% load widget_tweaks %}
 {% csrf_token %}
-{{ form }}
+<!-- {{ form }} -->
 
+				
+		{% render_field form.username class+="input-lg" placeholder="Username" %}
+		{% render_field form.email class+="input-lg" placeholder="Email" %}
+		<br> <br>
+		{% render_field form.password1 class+="input-lg" placeholder="Password" %}
+		<br> <br>
+		{% render_field form.password2 class+="input-lg" placeholder="Password (again)" %}
+		<br><br>
 
-<button type="submit" class="btn btn-light btn-md">Submit</button>
+		<button type="submit" class="btn btn-light btn-md">Submit</button> 
+
 </form>
 </div>
 
