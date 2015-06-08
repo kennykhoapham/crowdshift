@@ -94,7 +94,14 @@ background-color: rgb(0,128,128);
     background-size: cover;
     -o-background-size: cover;
 
+
 }
+
+.featured h2 {
+    font-family: "Lato", "HelveticaNeue-UltraLight", "Helvetica Neue UltraLight", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
+    color: #ffffff;
+}
+
 
 .navbar {
     background: rgba(0,0,0,0);
@@ -209,7 +216,8 @@ input[type="text"] {
 }
 
 .threecolumns h2 {
-  font-weight: normal;
+  font-weight: 200;
+    padding-bottom: 50px;
 }
 
 .threecolumns .col-lg-4 p {
@@ -224,5 +232,6 @@ input[type="text"] {
 
 .black {
   background-color: #000000;
-
 }
+
+

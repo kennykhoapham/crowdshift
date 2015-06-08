@@ -65,20 +65,24 @@
 </header>
 
 <div class="black">
+	
 	<div class="container threecolumns">
+
 	  <div class="row">
+	  		<div class="featured text-center">
+				<h2>Featured Vehicles</h2><br><br><br>
 
 
 
 	    <div class="col-md-4 text-center">
 				{% for i in vehicles %}
 					{% for img in i.photo %} 
-					<img class="img-circle" src="{{ img.photo.url }}" style="width: 140px; height: 140px;">
+					<img class="img-circle" src="{{ img.photo.url }}" style="width: 250px; height: 250px;">
 
 					{% endfor %}
-					<br><p>James help me write a delicious blurb for this car.</p>
-					<p><a class="btn btn-light" href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}">View CrowdShift Page</a></p>
-					<br><br><br>
+					<br><br><p>{{i.year}} {{i.make}} {{ i.model }}</p>
+					<p><a class="btn btn-light btn-sm" href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}">View Reviews</a></p>
+					<br><br><br><br>
 				{% endfor %}
 	    </div>
 
@@ -86,12 +90,12 @@
 	    <div class="col-md-4 text-center">
 				{% for i in vehicles2 %}
 					{% for img in i.photo %} 
-					<img class="img-circle" src="{{ img.photo.url }}" style="width: 140px; height: 140px;">
+					<img class="img-circle" src="{{ img.photo.url }}" style="width: 250px; height: 250px;">
 
 					{% endfor %}
-					<br><p>James help me write a delicious blurb for this car.</p>
-					<p><a class="btn btn-light" href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}">View CrowdShift Page</a></p>
-					<br><br><br>
+					<br><br><p>{{i.year}} {{i.make}} {{ i.model }}</p>
+					<p><a class="btn btn-light btn-sm" href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}">View Reviews</a></p>
+					<br><br><br><br>
 				{% endfor %}
 	    </div>
 
@@ -99,103 +103,20 @@
 	    <div class="col-md-4 text-center">
 				{% for i in vehicles3 %}
 					{% for img in i.photo %} 
-					<img class="img-circle" src="{{ img.photo.url }}" style="width: 140px; height: 140px;">
+					<img class="img-circle" src="{{ img.photo.url }}" style="width: 250px; height: 250px;">
 
 					{% endfor %}
-					<br><p>James help me write a delicious blurb for this car.</p>
-					<p><a class="btn btn-light" href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}">View CrowdShift Page</a></p>
-					<br><br><br>
+					<br><br><p>{{i.year}} {{i.make}} {{ i.model }}</p>
+					<p><a class="btn btn-light btn-sm" href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}">View Reviews</a></p>
+					<br><br><br><br>
 				{% endfor %}
 	    </div>
 
 
 	  </div>
 	</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<center>
-<div class="row">
-	<div class="featured">
-	<p style="font-size: 28px">Featured Vehicles</p><br>
-  <div class="col-md-4">
-
-			{% for i in vehicles %}
-				{% for img in i.photo %}
-					<a href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}"><img src="{{ img.photo.url }}" style="max-width: 300px; max-height: 200px;"></a>
-				{% endfor %}
-
-
-			<a href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}" class="font-change"><p>{{i.year}} {{i.make}} {{ i.model }}</p></a>
-
-			{% endfor %}
-		</div>
-  	<div class="col-md-4">
-
-
-			{% for i in vehicles2 %}
-				{% for img in i.photo %}
-					<a href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}"><img src="{{ img.photo.url }}" style="max-width: 300px; max-height: 200px;"></a>
-				{% endfor %}
-
-
-			<a href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}" class="font-change"><p>{{i.year}} {{i.make}} {{ i.model }}</p></a>
-
-			{% endfor %}
-  	</div>
-
-  	<div class="col-md-4">
-
-
-			{% for i in vehicles3 %}
-				{% for img in i.photo %}
-					<a href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}"><img src="{{ img.photo.url }}" style="max-width: 300px; max-height: 200px;"></a>
-				{% endfor %}
-
-
-			<a href="/reviews/{{ i.year }}/{{ i.make }}/{{ i.model }}" class="font-change"><p>{{i.year}} {{i.make}} {{ i.model }}</p></a>
-
-			{% endfor %}
-  	</div>
-
-
-
-
-
 	</div>
-
 </div>
-</center>
-
 
 
 
