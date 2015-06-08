@@ -1,21 +1,37 @@
 {% load i18n %}
-<!DOCTYPE html>
-<htmln lang="en">
-	<head>
-		<meta charset="utf-8"> 
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	</head>
+{% include "navigation.html" %}
 
-	<body>
-<h1> Use this form to add your own vehicle: </h1>
 
-			<form action='/add-vehicle/' method='post'>
-				{% csrf_token %}
-				{{ form.as_p }} <br> <br>
-				<input type='submit' value='Add vehicle' />
+<div class="container">
+    <div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<form class="form-horizontal" action='' method="POST">
+			    <div id="legend">
+			      <legend class="">Use this form to add your own vehicle:</legend>
+			    </div>
+			 
+
+<div class="login">
+<form action="/add-vehicle/" method="post">
+{% csrf_token %}
+
+<p><label for="id_year">Year</label>
+<input id="id_year" type="text" name="year" maxlength="100" /></p>
+
+<p><label for="id_make">Make</label>
+<input type="text" name="make" id="id_make" /></p>
+
+<p><label for="id_model">Model</label>
+<input type="text" name="model" id="id_model" /></p>
+
+<button type="submit" class="btn btn-light btn-md">Submit</button>
+</form>
+</div>
+
+
+			    </div>
 			</form>
+		</div>
+	</div>
+</div>
 
-	</body>
-</html>

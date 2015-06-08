@@ -1,6 +1,7 @@
 {% extends "registration/base.html" %}
 {% load i18n %}
 {% block title %}{% trans "Login" %}{% endblock %}
+
 {% block content %}
 {% url 'auth_password_reset' as auth_pwd_reset_url %}
 {% url 'registration_register' as register_url%}
@@ -38,7 +39,7 @@
                 		</li>
                 		<li class="font-change">
                 			{% else %}
-		       				<a href="{% url 'auth_login' %}">{% trans "Log In" %}</a>
+		       				
 		    				{% endif %}
 		    				{% endblock %}
                 		</li>
@@ -70,7 +71,8 @@
 <p>{% blocktrans %}<a href="{{ auth_pwd_reset_url }}">Forgot</a> your password?
     <a href="{{ register_url }}">Need an account</a>?{% endblocktrans %}</p>
 
-<input type="submit" value="{% trans "Login" %}" />
+<button type="submit" class="btn btn-light btn-md">Login</button>
+
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
 
