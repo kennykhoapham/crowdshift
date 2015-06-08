@@ -53,6 +53,20 @@ background-color: rgba(173, 106, 12, 0.56);
     background-color: rgba(0,0,0,0.7);
 }
 
+.btn-light {
+    border-radius: 8;
+    color: #ffffff;
+background-color: rgb(0,128,128);
+    font-family: "HelveticaNeue-UltraLight", "Helvetica Neue UltraLight", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 17px;
+    color:#ffffff;
+}
+
+.btn-light:hover {
+    color: #ffffff;
+    background-color: rgba(0,128,128,0.7);
+}
+
 
 .header {
     display: table;
@@ -172,5 +186,9 @@ input[type="text"] {
 
 .form-control{
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.login p {
+    color: #000000;
 }
 

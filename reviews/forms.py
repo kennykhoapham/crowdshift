@@ -13,9 +13,9 @@ class WriteReviewForm(forms.Form):
 
 
 class AddVehicleForm(forms.Form):
-	year = forms.CharField(label="Year", max_length=4, widget=forms.TextInput(attrs={'size':'5'}))
-	make = forms.CharField(label="Make", max_length=20, widget=forms.TextInput(attrs={'size':'20'}))
-	model = forms.CharField(label="Model", max_length=20, widget=forms.TextInput(attrs={'size':'20'}))
+	year = forms.CharField(label="Year", max_length=4, widget=forms.TextInput(attrs={'size':'50'}))
+	make = forms.CharField(label="Make", max_length=20, widget=forms.TextInput(attrs={'size':'50'}))
+	model = forms.CharField(label="Model", max_length=20, widget=forms.TextInput(attrs={'size':'50'}))
 
 
 class AddProfilePhotoForm(forms.Form):
