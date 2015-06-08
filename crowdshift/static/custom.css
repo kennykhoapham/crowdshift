@@ -53,6 +53,7 @@ background-color: rgba(173, 106, 12, 0.56);
     background-color: rgba(0,0,0,0.7);
 }
 
+
 .btn-light {
     border-radius: 8;
     color: #ffffff;
@@ -101,7 +102,14 @@ background-color: rgb(0,128,128);
   }
 
 .navbar-car{
-  background: rgba(255, 255, 255, 1);
+  background: rgb(0,0,0);
+  height:50px;
+  line-height:50px;
+  margin-bottom: 0px;
+}
+
+.navbar-landing{
+  background: rgb(0,0,0);
   height:50px;
   line-height:50px;
   margin-bottom: 0px;
@@ -110,7 +118,7 @@ background-color: rgb(0,128,128);
 .navbar-brand, .font-change {
 	font-family: "HelveticaNeue-UltraLight", "Helvetica Neue UltraLight", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
   	font-size: 19px;
-  	color:#000000;
+  	color:#ffffff;
     vertical-align: middle;
 
 }

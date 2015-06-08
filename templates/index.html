@@ -17,7 +17,7 @@
 	
 
 
-<nav class="navbar navbar-fixed-top">
+<nav class="navbar navbar-landing navbar-fixed-top">
     <div class="container">
 		{% block header %}
         	<!-- <a class="navbar-brand" href="/">{% trans "Home" %}</a> -->
@@ -59,7 +59,7 @@
 				{% csrf_token %}
 				{% render_field form.search class+="input-large" type+="search" placeholder="Ex: 2015 Toyota Camry" %}
 				<br> <br>
-		   		<button type="submit" class="btn btn-dark btn-lg">Search</button>
+		   		<button type="submit" class="btn btn-light btn-lg">Search</button>
 			</form>
     </div>
 </header>
